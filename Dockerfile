@@ -1,32 +1,46 @@
-FROM node:6.9.5-alpine
+# ------------------------------------
+# build from a base image that includes
+# everything needed to run Node.js v7.9
+FROM node:7.9
+# ------------------------------------
 
-# use dumb-init to handle SIGINT, SIGTERM, etc
-ADD https://github.com/Yelp/dumb-init/releases/download/v1.1.1/dumb-init_1.1.1_amd64 /usr/local/bin/dumb-init  
-RUN chmod +x /usr/local/bin/dumb-init
-
+# ------------------------------------
 # put the app in the right folder
 RUN mkdir -p /var/app
 WORKDIR /var/app
+# ------------------------------------
 
-# cache the package.json first
+# ------------------------------------
+# cache npm modules for faster builds
 COPY ./package.json /var/app
+RUN npm install -g nodemon gulp-cli babel-cli@7.0.0-alpha.9
+RUN npm install
+# ------------------------------------
 
-# install build tools and production modules
-RUN apk add --no-cache make gcc g++ python
-RUN npm install --production
-
-# be sure you have a .dockerignore file for COPY
+# ------------------------------------
+# put the app into the image.
+# be sure you have a .dockerignore file
+# so you only copy the files you need
 COPY ./ /var/app
+# ------------------------------------
 
-# environment variables and port numbers
-ENV NODE_ENV=production NODE_PATH=./lib:.
-EXPOSE 3000
+# ------------------------------------
+# set environment variables and tcp/ip
+# port numbers that will be used
+ENV NODE_ENV=development NODE_PATH=./lib:.
+EXPOSE 5858
+# ------------------------------------
 
-# reduce permissions for account running app
-RUN adduser -D app
-USER app
+# ------------------------------------
+# used for performance improvement when
+# installing modules while the container
+# is running
+VOLUME /var/app/node_modules
+# ------------------------------------
 
-# run it! use ENTRYPOINT and CMD for flexibility in 
-# creating images from this image
-ENTRYPOINT ["dumb-init"]
-CMD ["node", "web/bin/www"]
+# ------------------------------------
+# normally you would add a CMD here
+# but for this demonstration, the CMD
+# will be set by the "npm run es7"
+# command-line
+# ------------------------------------
