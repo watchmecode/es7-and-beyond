@@ -3,11 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start-web": "node ./web/bin/www",
-    "build": "docker build -t es7-and-beyond .; npm run build:dev",
-    "build:dev": "docker build -t es7-and-beyond:dev -f dev.dockerfile .",
-    "es7": "docker stop es7-dev; docker rm es7-dev; docker run -it --user root -p 3000:3000 -p 5858:5858 -p 35729:35729 -v $PWD:/var/app -v es7-node-modules:/var/app/node_modules --name es7-dev es7-and-beyond:dev bash; exit 0",
-    "clean": "docker stop es7-dev es7-prod; docker rm es7-dev es7-prod; docker rmi es7-and-beyond es7-and-beyond:dev; exit 0"
+    "build": "docker build -t es7-and-beyond .",
+    "es7": "docker stop es7; docker run -it -p 5858:5858 -v $PWD:/var/app -v es7-node-modules:/var/app/node_modules --name es7 es7-and-beyond bash; exit 0",
+    "clean": "docker stop es7; docker rm es7; docker rmi es7-and-beyond es7-and-beyond:dev; exit 0"
   },
   "dependencies": {},
   "devDependencies": {
