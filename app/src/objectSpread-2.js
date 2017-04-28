@@ -14,11 +14,11 @@ var justin = {
   type: "Consultant"
 };
 
-var derick = {...employee}; 
+var derick = { ...justin }; 
 
-another.firstName = "Derick";
-another.lastName = "Bailey";
+derick.firstName = "Derick";
+derick.lastName = "Bailey";
 
-console.log(JSON.stringify(employee, null, 2));
+console.log(JSON.stringify(justin, null, 2));
 console.log("------------");
-console.log(JSON.stringify(another, null, 2));
+console.log(JSON.stringify(derick, null, 2));
