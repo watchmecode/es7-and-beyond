@@ -31,10 +31,8 @@ var jobsByFamily = {
   ]
 };
 
-Object.keys(jobsByFamily).forEach((family) => {
-  console.log("Job Family:", family);
-  var jobs = jobsByFamily[family];
+Object.values(jobsByFamily).forEach((jobs) => {
   jobs.forEach((job) => {
-    console.log("  -", job.name, "(ID: " + job.id + ")");
+    console.log(job.name, "(ID: " + job.id + ")");
   });
 });
