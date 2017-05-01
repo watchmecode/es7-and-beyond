@@ -38,10 +38,3 @@ EXPOSE 5858
 # is running
 VOLUME /var/app/node_modules
 # --------------------------------------
-
-# --------------------------------------
-# normally you would add a CMD here. for
-# this demonstration, the CMD will be 
-# set by the "npm run es7" command-line
-# --------------------------------------
-# CMD ["node", "bin/www"]
