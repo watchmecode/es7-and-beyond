@@ -1,7 +1,5 @@
-function doStuff(){
-  let {x, y, ...z} = { x: 1, y: 2, a: 3, b: 4 }; 
+// example taken from https://github.com/tc39/proposal-object-rest-spread
 
-  console.log("Result:", x, y, z);
-}
+let {x, y, ...z} = { x: 1, y: 2, a: 3, b: 4 }; 
 
-doStuff();
+console.log("Result:", x, y, z);
