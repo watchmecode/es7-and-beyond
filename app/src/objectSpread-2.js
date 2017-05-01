@@ -22,8 +22,6 @@ var derick = { ...justin };
 derick.firstName = "Derick";
 derick.lastName = "Bailey";
 
-justin.skills.push("oracle");
-
 console.log(JSON.stringify(justin, null, 2));
 console.log("------------");
 console.log(JSON.stringify(derick, null, 2));
