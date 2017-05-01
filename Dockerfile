@@ -44,3 +44,4 @@ VOLUME /var/app/node_modules
 # this demonstration, the CMD will be 
 # set by the "npm run es7" command-line
 # --------------------------------------
+# CMD ["node", "bin/www"]

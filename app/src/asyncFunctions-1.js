@@ -2,17 +2,26 @@ function createEmployeeWorkflow(cb){
   createEmployee(function(err, employee){
     if (err) { return cb(err); }
 
-    selectManager(employee, function(err, manager){
-      if (err) { return cb(err); }
-
+    if (employee.needsManager()){
       employee.manager = manager;
+
+      selectManager(employee, function(err, manager){
+        if (err) { return cb(err); }
+
+        saveEmployee(employee, function(err){
+          if (err) { return cb(err); }
+
+          cb(undefined, employee);
+        });
+      });
+
+    } else {
       saveEmployee(employee, function(err){
         if (err) { return cb(err); }
 
         cb(undefined, employee);
       });
-
-    });
+    }
 
   });
 }

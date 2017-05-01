@@ -33,7 +33,9 @@ var jobsByFamily = {
 
 Object.keys(jobsByFamily).forEach((family) => {
   console.log("Job Family:", family);
+
   var jobs = jobsByFamily[family];
+
   jobs.forEach((job) => {
     console.log("  -", job.name, "(ID: " + job.id + ")");
   });

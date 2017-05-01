@@ -9,18 +9,20 @@ var justin = {
     "mongodb"
   ],
   department: "I.T.",
-  location: "West Campus / I.T. Department",
+  location: "West Campus / I.T. Building",
   manager: "Troy",
-  type: "Consultant"
+  employeeType: "Consultant"
 };
 
-  // SHALLOW COPY 
-  // ------------
-  // via Object Spread Properties
-  var derick = { ...justin }; 
+// SHALLOW COPY 
+// ------------
+// via Object Spread Properties
+var derick = { ...justin }; 
 
 derick.firstName = "Derick";
 derick.lastName = "Bailey";
+
+justin.skills.push("oracle");
 
 console.log(JSON.stringify(justin, null, 2));
 console.log("------------");
