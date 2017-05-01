@@ -14,7 +14,10 @@ var justin = {
   type: "Consultant"
 };
 
-var derick = { ...justin }; 
+  // SHALLOW COPY 
+  // ------------
+  // via Object Spread Properties
+  var derick = { ...justin }; 
 
 derick.firstName = "Derick";
 derick.lastName = "Bailey";
