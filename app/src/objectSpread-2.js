@@ -17,10 +17,12 @@ var justin = {
 // SHALLOW COPY 
 // ------------
 // via Object Spread Properties
-var derick = { ...justin }; 
+var derick = { ...justin, skills: [] }; 
 
 derick.firstName = "Derick";
 derick.lastName = "Bailey";
+
+justin.skills.push("Oracle");
 
 console.log(JSON.stringify(justin, null, 2));
 console.log("------------");

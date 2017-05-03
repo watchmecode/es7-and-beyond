@@ -31,9 +31,10 @@ var jobsByFamily = {
   ]
 };
 
-Object.entries(jobsByFamily).forEach(([family,jobs]) => {
+Object.entries(jobsByFamily).forEach( ([family, jobs]) => {
   console.log("Job Family:", family);
   jobs.forEach((job) => {
     console.log("  -", job.name, "(ID: " + job.id + ")");
   });
+  console.log("");
 });
