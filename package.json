@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "docker build -t es7-and-beyond .",
-    "es7": "docker stop es7; docker rm es7; docker run -it -p 5858:5858 -v $PWD:/var/app -v es7-node-modules:/var/app/node_modules --name es7 es7-and-beyond bash; exit 0",
+    "es7": "docker stop es7; docker rm es7; docker run -it -p 5858:5858 -v \"$PWD:/var/app\" -v es7-node-modules:/var/app/node_modules --name es7 es7-and-beyond bash; exit 0",
     "es7-shell": "docker exec -it es7 bash; exit 0",
     "clean": "docker stop es7; docker rm es7; docker rmi es7-and-beyond; exit 0"
   },
